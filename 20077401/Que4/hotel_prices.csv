@@ -1,0 +1,12 @@
+hotel_name,room_name,price_per_night,capacity,season_start,season_end,source_file
+Hotel Castle House,Basic Room,€50,1 guests,20 December,30 December,hotel1.html
+Hotel Castle House,Standard Room,€80,2 guests,20 December,30 December,hotel1.html
+Hotel Castle House,Superior Room,€95,2 guests,20 December,30 December,hotel1.html
+Hotel Castle House,Deluxe Room,€120,3 guests,20 December,30 December,hotel1.html
+Hotel Castle House,Family Suite,€150,4 guests,20 December,30 December,hotel1.html
+Hotel Castle House,Sea View Suite,€180,2 guests,20 December,30 December,hotel1.html
+Hotel Aungier Street,Garden Room,€75,2 guests,20 December,30 December,hotel2.html
+Hotel Aungier Street,Pool View Room,€90,2 guests,20 December,30 December,hotel2.html
+Hotel Aungier Street,Ocean View Room,€130,2 guests,20 December,30 December,hotel2.html
+Hotel Aungier Street,Family Apartment,€160,4 guests,20 December,30 December,hotel2.html
+Hotel Aungier Street,Penthouse Suite,€220,4 guests,20 December,30 December,hotel2.html
