@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Expenses</h2>
+
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Note</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.category }}</td>
+            <td>€{{ expense.amount }}</td>
+            <td>{{ expense.note }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('main.delete_expense', expense_id=expense.id) }}">
+                    <!-- CSRF token for protection -->
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

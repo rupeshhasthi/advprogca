@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Add Expense</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <label>{{ form.category.label }}</label>
+        {{ form.category }}
+        {% for error in form.category.errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+
+        <label>{{ form.amount.label }}</label>
+        {{ form.amount }}
+        {% for error in form.amount.errors %}
+            <p class="error">{{ error }}</p>
+        {% endfor %}
+
+        <label>{{ form.note.label }}</label>
+        {{ form.note }}
+
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}
