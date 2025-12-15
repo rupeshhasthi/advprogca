@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rupes\\advprogca\\ca1\\Que1\\Que1.csproj": {}
+    "C:\\Users\\rupes\\advprogca\\20077401\\Que1\\Que1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rupes\\advprogca\\ca1\\Que1\\Que1.csproj": {
+    "C:\\Users\\rupes\\advprogca\\20077401\\Que1\\Que1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rupes\\advprogca\\ca1\\Que1\\Que1.csproj",
+        "projectUniqueName": "C:\\Users\\rupes\\advprogca\\20077401\\Que1\\Que1.csproj",
         "projectName": "Que1",
-        "projectPath": "C:\\Users\\rupes\\advprogca\\ca1\\Que1\\Que1.csproj",
+        "projectPath": "C:\\Users\\rupes\\advprogca\\20077401\\Que1\\Que1.csproj",
         "packagesPath": "C:\\Users\\rupes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rupes\\advprogca\\ca1\\Que1\\obj\\",
+        "outputPath": "C:\\Users\\rupes\\advprogca\\20077401\\Que1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rupes\\AppData\\Roaming\\NuGet\\NuGet.Config"
