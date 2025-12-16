@@ -9,6 +9,7 @@
             <th>Category</th>
             <th>Amount</th>
             <th>Note</th>
+            <th>Date & Time</th>
             <th>Actions</th>
         </tr>
 
@@ -17,6 +18,7 @@
             <td>{{ expense.category }}</td>
             <td>€{{ expense.amount }}</td>
             <td>{{ expense.note }}</td>
+            <td>{{ expense.datetime.strftime("%d-%m-%Y %H:%M")}}</td>
             <td>
                 <form method="POST" action="{{ url_for('main.delete_expense', expense_id=expense.id) }}">
                     <!-- CSRF token for protection -->

@@ -3,7 +3,7 @@ import sys
 import os
 
 # Ensure root folder is in Python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app import create_app, db
 from app.models import User, Expense

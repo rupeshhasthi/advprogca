@@ -3,7 +3,7 @@ from app import db
 from app.models import Expense, User
 from app.forms import ExpenseForm, RegisterForm, LoginForm
 from functools import wraps
-from datetime import datetime
+from datetime import datetime, timedelta
 
 main = Blueprint("main", __name__)
 
@@ -64,13 +64,58 @@ def logout():
 @login_required
 def index():
     user_id = session["user_id"]
-    total = (
+    user = User.query.get(user_id)
+
+    now = datetime.utcnow()
+
+    # Start of calendar week (Monday 00:00)
+    start_of_week = (now - timedelta(days=now.weekday())).replace(
+        hour=0, minute=0, second=0, microsecond=0
+    )
+
+    # Start of calendar month (1st day 00:00)
+    start_of_month = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+
+    # ✅ Current balance (income + expenses)
+    current_balance = (
         db.session.query(db.func.sum(Expense.amount))
-        .filter_by(user_id=user_id)
+        .filter(Expense.user_id == user_id)
         .scalar()
         or 0
     )
-    return render_template("index.html", total=total)
+
+    # Money spent this calendar week (expenses only)
+    spent_this_week = (
+        db.session.query(db.func.sum(Expense.amount))
+        .filter(
+            Expense.user_id == user_id,
+            Expense.amount < 0,
+            Expense.datetime >= start_of_week
+        )
+        .scalar()
+        or 0
+    )
+
+    # Money spent this calendar month (expenses only)
+    spent_this_month = (
+        db.session.query(db.func.sum(Expense.amount))
+        .filter(
+            Expense.user_id == user_id,
+            Expense.amount < 0,
+            Expense.datetime >= start_of_month
+        )
+        .scalar()
+        or 0
+    )
+
+    return render_template(
+        "index.html",
+        user=user,
+        current_balance=current_balance,
+        spent_this_week=abs(spent_this_week),
+        spent_this_month=abs(spent_this_month),
+    )
+
 
 
 # View Expenses

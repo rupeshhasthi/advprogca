@@ -1,8 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="card">
-    <h2>Total Savings</h2>
-    <h1>€{{ total }}</h1>
+<div class="dashboard">
+
+    <!-- Main card -->
+    <div class="card main-card">
+        <h2 class="greeting">Hi {{ user.email }}!</h2>
+
+        <div class="balance-row">
+            <span class="balance-label">Current Balance:</span>
+            <span class="balance-amount">€{{ current_balance }}</span>
+        </div>
+    </div>
+
+    <!-- Small cards -->
+    <div class="small-cards">
+        <div class="card small-card week-card">
+            <p>Money spent this week</p>
+            <h2>€{{ spent_this_week }}</h2>
+        </div>
+
+        <div class="card small-card month-card">
+            <p>Money spent this month</p>
+            <h2>€{{ spent_this_month }}</h2>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

@@ -4,29 +4,38 @@
     <meta charset="UTF-8">
     <title>Personal Finance Manager</title>
 
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-
 <div class="navbar">
-    <a href="/">Finance Manager</a>
 
-    {% if session.get("user_id") %}
-        <a href="/add">Add Expense</a>
-        <a href="/expenses">Expenses</a>
-        <a href="/logout">Logout</a>
-    {% else %}
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    {% endif %}
+    <!-- LEFT SIDE NAV -->
+    <div class="nav-left">
+        <a href="/">Finance Manager</a>
+
+        {% if session.get("user_id") %}
+            <a href="/add">Add Expense</a>
+            <a href="/expenses">Expenses</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+
+    <!-- RIGHT SIDE NAV -->
+    <div class="nav-right">
+        {% if session.get("user_id") %}
+            {% set nav_user = User.query.get(session.get("user_id")) %}
+            <span class="nav-user">👤 {{ nav_user.email }}</span>
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </div>
+
 </div>
-
 
 <div class="container">
 
-    
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -37,7 +46,6 @@
         {% endif %}
     {% endwith %}
 
-    
     {% block content %}{% endblock %}
 
 </div>

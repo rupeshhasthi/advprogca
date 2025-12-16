@@ -27,14 +27,19 @@ def create_app(test_config=None):
         app.config["WTF_CSRF_ENABLED"] = False
 
     db.init_app(app)
-
     csrf.init_app(app)
 
     from .routes import main
-
     app.register_blueprint(main)
+
+    from .models import User
+
+    @app.context_processor
+    def inject_user_model():
+        return dict(User=User)
 
     with app.app_context():
         db.create_all()
 
     return app
+
